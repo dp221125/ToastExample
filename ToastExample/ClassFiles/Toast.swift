@@ -56,9 +56,15 @@ extension UIView {
     func showToast(_ toast: UIView) {
         UIView.animate(withDuration: 0.5, delay: 2.0, options: [.beginFromCurrentState], animations: {
             toast.alpha = 1.0
+            UIView.animate(withDuration: 2.5) {
+                toast.frame.origin.y -= 12
+            }
         }) { _ in
             UIView.animate(withDuration: 0.8, delay: 1.6, options: [], animations: {
                 toast.alpha = 0
+                UIView.animate(withDuration: 0.8, delay: 1.6, options: [], animations: {
+                    toast.frame.origin.y += 12
+                })
             }) { _ in
                 toast.removeFromSuperview()
             }
