@@ -56,6 +56,7 @@ extension UIView {
     func showToast(_ toast: UIView) {
         UIView.animate(withDuration: 0.5, delay: 2.0, options: [.beginFromCurrentState], animations: {
             toast.alpha = 1.0
+            self.isUserInteractionEnabled = false
             UIView.animate(withDuration: 2.5) {
                 toast.frame.origin.y -= 12
             }
@@ -67,6 +68,7 @@ extension UIView {
                 })
             }) { _ in
                 toast.removeFromSuperview()
+                self.isUserInteractionEnabled = true
             }
         }
     }
